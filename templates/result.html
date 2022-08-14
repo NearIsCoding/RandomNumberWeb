@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Bootstrap 5 Homepage template | Bootstrap Snippets</title>
+    <link href="{{ url_for('static', filename='styles/bootstrap.min.css') }}" rel="stylesheet" >
+    <link href="{{ url_for('static', filename='styles/main.css') }}" rel="stylesheet" >
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename='js/slick.js') }}" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename='js/jquery.mousewheel.js') }}" charset="utf-8"></script>
+    <style>
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info text-center px-4">
+      <div class="container">
+        <a class="navbar-brand" href="#">Generador de Números Aletorios</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{ url_for('index') }}">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row px-2">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-12 pt-5">
+          <div class="pt-5">
+            <div class="">
+              <div class="">
+                <h1 class="animated fadeInDown" style="animation-delay: 1s">Website <span class="text-info">Development</span></h1>
+                <p class="animated fadeInUp" style="animation-delay: 2s">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod     tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At     vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,     no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
+                <div class="container_slider">
+                  <div class="slider-vertical">
+                      {%for i in range(0, len)%}
+                      <div><span>{{ i }}:</span> {{ numbers[i] }} </div>
+                      {%endfor%}
+                  </div>
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-info text-white" type="button" onclick="copyToClipboard()">Copy to Clipboard</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-12"><img alt="" class="img-fluid" src="https://i.postimg.cc/Pqyhx7qg/2.png"></div>
+      </div>
+    </div>
+    <div  class="inputs-hidden">
+      <input type="text" value="{{ numbers }}" id="input_clipboard">
+    </div>
+    <script type="text/javascript" charset="utf-8">
+      
+    function copyToClipboard() {
+      var copyText = document.querySelector("#input_clipboard").value;
+      navigator.clipboard.writeText(copyText).then(() => {
+              console.log('copy success')
+      });
+    }
+        
+      var slickCarousel = $('.slider-vertical');
+      slickCarousel.slick({
+          dots: true,
+          infinite: false,
+          speed: 500,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          vertical: true,
+          verticalSwiping: true,
+          dots: false,
+          centerPadding: '50px',
+          arrows: false,
+      });
+
+
+      //mouse wheel
+      slickCarousel.mousewheel(function(e) {
+      e.preventDefault();
+          if (e.deltaY < 0) {
+              $(this).slick('slickNext'); 
+          }
+          else {
+              $(this).slick('slickPrev');
+          }
+      });
+    </script>
+  </body>
+</html>
