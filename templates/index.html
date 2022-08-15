@@ -10,7 +10,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-info text-center px-4">
       <div class="container">
-        <a class="navbar-brand" href="#">Generador de Números Aletorios</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+        <a class="navbar-brand" href="{{ url_for('index') }}">Generador de Números Aletorios</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -30,12 +30,14 @@
                 <p class="animated fadeInUp" style="animation-delay: 2s">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod     tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At     vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,     no sea takimata sanctus est Lorem ipsum dolor sit amet.
                 </p>
-                 <form action="{{ url_for('request_generator') }}" method="post">
-                 <div class="mb-3">
+                 <div id="error"></div>
+                 <form action="{{ url_for('request_generator') }}" method="post" id="form">
+                  <div class="mb-3">
                    <label for="exampleFormControlInput1" class="form-label">Ingrese la cantidad de números deseados</label>
-                   <input class="form-control" name="quantity" id="quantity" type="text" >
-                </div> 
-                <input class="btn btn-info text-white" type="submit" value="Get Started">
+                   <input class="form-control" name="quantity" id="quantity" type="text" ><br>
+                 </div>
+                 <script src="..\static\js\index.js"></script>
+                 <input class="btn btn-info text-white" type="submit" value="Get Started">
                 </form>
               </div>
             </div>

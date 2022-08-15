@@ -5,12 +5,19 @@ This is a starter pack for beginners, so they can get started with Flask! Go ahe
 ## Installation
 + Clone this repository:
 ```
+git clone https://github.com/NearIsCoding/RandomNumberWeb.git
 ```
 + Create virtual enviroment Install Flask using pip:
 ```
 python -m venv env
 
-suource env/bin/activate
+
+""" Linux """
+source env/bin/activate
+
+""" Windows """
+.\env\Scripts\activate
+
 
 pip install Flask
 ```
