@@ -1,23 +1,17 @@
-const input = document.getElementById('quantity');
-const form = document.getElementById('form');
-const errorElement = document.getElementById('error')
+/** Oportunidad de mejorar **/
 
+const input = document.getElementById("quantity");
+const form = document.getElementById("form");
 
-form.addEventListener('submit' , (e) => {
-    let messages = []
-    if (input.value == '' || input.value == null){
-        messages.push('El campo es requerido')
-    }
+form.addEventListener("submit", (e) => {
+  if (input.value == "" || input.value == null) {
+    input.className = "form-control is-invalid";
+    e.preventDefault();
+  }
+  var numbers = /^[0-9]+$/;
+  if (!input.value.match(numbers)) {
+    input.className = "form-control is-invalid";
+    e.preventDefault();
+  }
+});
 
-    if (!isNaN(input)){
-        messages.push('El campo debe ser un numero')
-    }
-
-    if (messages.length > 0){
-        e.preventDefault()
-        errorElement.innerText = messages.join(', ')
-    }
-})
-
-
-input.setAttribute('required', '');
