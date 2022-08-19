@@ -3,6 +3,8 @@ from sys import stdout
 from flask import Flask, render_template, request, make_response, redirect, url_for
 
 from random_variable import generate
+from random_variable import media
+from random_variable import varianza
 
 app = Flask(
   __name__,
@@ -30,7 +32,9 @@ def request_generator():
   if request.method == 'POST':
     quantity = int(request.form['quantity'])
     numbers = generate(quantity)
-  return render_template('result.html', len = len(numbers), numbers = numbers)
+    m = media(numbers)
+    v = varianza(numbers)
+  return render_template('result.html', len = len(numbers), numbers = numbers, media = m, varianza = v)
 
 
 # Redirects

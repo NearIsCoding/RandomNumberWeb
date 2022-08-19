@@ -1,5 +1,6 @@
 from random import random
 from math import log
+from statistics import pvariance
 
 def generate(quantity):
     seed = random()
@@ -13,7 +14,20 @@ def generate(quantity):
         seed= fixSeed(seed)
         generatedNumbers.append(seed)
     return generatedNumbers
+
+def media(generatedNumbers):
+    suma=0
+    media=0
+    i=0
+    for i in range (len(generatedNumbers)):
+        suma+=generatedNumbers[i]
+    media=suma / len(generatedNumbers)
+    return  media
     
+def varianza(generatedNumbers):
+    return  pvariance(generatedNumbers)
+
+
 def fixSeed(seed):
     while seed >= 1:
         seed = seed/10
